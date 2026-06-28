@@ -12,6 +12,8 @@
     /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    /* Responsive side padding: min 140px, and centers content (max ~1140px) on wide screens */
+    :root { --pad-x: max(140px, calc((100% - 1140px) / 2)); }
     body {
       font-family: 'Hanken Grotesk', sans-serif;
       color: #18293a;
@@ -27,10 +29,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 100px;
-      background: #13293f;
+      padding: 12px 26px;
+      margin: 14px var(--pad-x) 0;
+      background: rgba(11,24,38,0.9);
+      backdrop-filter: blur(16px) saturate(150%);
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 20px;
+      box-shadow: 0 12px 34px -14px rgba(19,41,63,0.5), inset 0 1px 0 rgba(255,255,255,0.16);
       position: sticky;
-      top: 0;
+      top: 14px;
       z-index: 100;
     }
     .logo-box {
@@ -145,18 +153,20 @@
       position: relative;
       height: 620px;
       overflow: hidden;
+      background: #ffffff;
     }
     .hero-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(260deg, rgba(15,32,50,0.58) 0%, rgba(15,32,50,0.34) 42%, rgba(15,32,50,0.06) 100%);
+      background: transparent;
     }
     .hero-content {
       position: absolute;
@@ -165,17 +175,17 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-end;
-      padding: 0 100px;
+      padding: 0 var(--pad-x);
     }
     .hero-card {
-      background: rgba(244,238,220,0.14);
-      backdrop-filter: blur(7px);
-      -webkit-backdrop-filter: blur(7px);
-      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(19,41,63,0.46);
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 20px;
       padding: 32px 36px;
       max-width: 470px;
-      box-shadow: 0 8px 32px -12px rgba(0,0,0,0.35);
+      box-shadow: 0 12px 36px -12px rgba(0,0,0,0.4);
       animation: heroFadeIn 0.8s ease-out;
     }
     @keyframes heroFadeIn {
@@ -201,7 +211,7 @@
 
     /* ===== CATEGORIES (sticky stacking cards) ===== */
     .categories {
-      padding: 88px 100px 120px;
+      padding: 88px var(--pad-x) 120px;
     }
     .categories-title {
       font-size: 30px;
@@ -215,21 +225,22 @@
       display: flex;
       flex-direction: column;
       gap: 28px;
+      max-width: 720px;
+      margin: 0 auto;
     }
     .category-card {
       --top: 96px;
       position: sticky;
       top: calc(var(--top) + var(--i, 0) * 16px);
       display: flex;
-      align-items: stretch;
-      justify-content: space-between;
-      gap: 44px;
+      flex-direction: column;
+      gap: 28px;
       background: linear-gradient(135deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.66) 100%);
       backdrop-filter: blur(16px) saturate(140%);
       -webkit-backdrop-filter: blur(16px) saturate(140%);
       border: 1px solid rgba(255,255,255,0.55);
       border-radius: 28px;
-      padding: 44px 48px;
+      padding: 32px;
       box-shadow:
         0 16px 40px -18px rgba(19,41,63,0.28),
         inset 0 1px 0 rgba(255,255,255,0.85),
@@ -269,24 +280,10 @@
       margin-top: 14px;
       max-width: 440px;
     }
-    .cat-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-top: auto;
-      padding-top: 28px;
-      font-size: 16px;
-      font-weight: 700;
-      color: #13293f;
-      transition: color 0.2s;
-    }
-    .cat-cta-arrow { transition: transform 0.2s; }
-    .category-card:hover .cat-cta { color: #b23a2e; }
-    .category-card:hover .cat-cta-arrow { transform: translateX(5px); }
     .cat-visual {
-      flex-shrink: 0;
-      width: 320px;
-      min-height: 230px;
+      order: -1;
+      width: 100%;
+      height: 380px;
       border-radius: 20px;
       background-color: #13293f;
       background-size: cover;
@@ -296,7 +293,7 @@
 
     /* ===== ABOUT ===== */
     .about {
-      padding: 90px 100px;
+      padding: 90px var(--pad-x);
       background: #13293f;
       color: #f4eedc;
     }
@@ -347,7 +344,7 @@
 
     /* ===== SERVICES ===== */
     .services {
-      padding: 88px 100px;
+      padding: 88px var(--pad-x);
       background: #f6f6f4;
     }
     .services h2 {
@@ -389,7 +386,7 @@
 
     /* ===== BRANDS ===== */
     .brands {
-      padding: 48px 100px;
+      padding: 48px var(--pad-x);
       border-top: 1px solid rgba(27,58,91,0.10);
       border-bottom: 1px solid rgba(27,58,91,0.10);
     }
@@ -443,7 +440,7 @@
 
     /* ===== LOCATION ===== */
     .location {
-      padding: 88px 100px;
+      padding: 88px var(--pad-x);
     }
     .location-grid {
       display: grid;
@@ -509,7 +506,7 @@
 
     /* ===== CTA ===== */
     .cta {
-      padding: 74px 100px;
+      padding: 74px var(--pad-x);
       background: rgba(27,58,91,0.07);
       color: #13293f;
       text-align: center;
@@ -528,7 +525,7 @@
 
     /* ===== FOOTER ===== */
     .site-footer {
-      padding: 22px 100px;
+      padding: 22px var(--pad-x);
       background: #13293f;
       color: #7f93a4;
       display: flex;
@@ -580,13 +577,13 @@
        RESPONSIVE — TABLET
        =============================== */
     @media (max-width: 1080px) {
-      .site-header { padding: 16px 40px; }
+      .site-header { padding: 11px 20px; margin: 12px 40px 0; }
       .categories { padding: 60px 40px 90px; }
       .categories-title { font-size: 22px; }
       .categories-grid { gap: 22px; }
-      .category-card { padding: 34px 36px; gap: 32px; }
+      .category-card { padding: 28px; gap: 24px; }
       .cat-name { font-size: 26px; }
-      .cat-visual { width: 230px; font-size: 78px; }
+      .cat-visual { height: 340px; }
       .about { padding: 60px 40px; }
       .about-grid { grid-template-columns: 1fr; gap: 36px; }
       .about h2 { font-size: 34px; }
@@ -608,7 +605,7 @@
        RESPONSIVE — MOBILE
        =============================== */
     @media (max-width: 768px) {
-      .site-header { padding: 14px 18px; }
+      .site-header { padding: 10px 14px; margin: 10px 14px 0; top: 10px; }
       .logo-box { padding: 6px 11px; border-radius: 9px; }
       .logo-box img { height: 30px; }
       .main-nav { display: none; }
@@ -619,7 +616,7 @@
       .hero-overlay {
         background: linear-gradient(180deg, rgba(15,32,50,0.32) 0%, rgba(15,32,50,0.30) 40%, rgba(15,32,50,0.62) 100%);
       }
-      .hero-img { object-position: 18% center; }
+      .hero-img { object-fit: cover; object-position: 18% center; }
       .hero-content {
         align-items: stretch;
         justify-content: flex-end;
@@ -638,7 +635,8 @@
       .categories-title { font-size: 18px; letter-spacing: 0.1em; line-height: 1.2; margin-bottom: 22px; }
       .categories-grid { gap: 18px; }
       .category-card {
-        position: static;
+        position: sticky;
+        top: calc(64px + var(--i, 0) * 10px);
         flex-direction: column;
         gap: 20px;
         padding: 22px;
@@ -648,8 +646,7 @@
       .cat-num { font-size: 13px; }
       .cat-name { font-size: 22px; margin-top: 10px; line-height: 1.15; }
       .cat-desc { font-size: 14.5px; margin-top: 10px; max-width: none; }
-      .cat-cta { padding-top: 18px; font-size: 15px; }
-      .cat-visual { order: -1; width: 100%; height: 150px; font-size: 64px; border-radius: 16px; }
+      .cat-visual { order: -1; width: 100%; height: 210px; font-size: 64px; border-radius: 16px; }
 
       .about { padding: 44px 20px; }
       .about-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -753,7 +750,7 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <img class="hero-img" src="assets/storefront.jpeg" alt="Loja Lucimar Materiais de Construção em Mongaguá">
+    <img class="hero-img" src="assets/storefront.jpg" alt="Loja Lucimar Materiais de Construção em Mongaguá">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-card">
@@ -771,105 +768,95 @@
     <div class="categories-title">Trabalhamos com as seguintes linhas:</div>
     <div class="categories-grid">
 
-      <a href="https://wa.me/5513997585780?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20Pisos%20e%20Revestimentos." target="_blank" rel="noopener" class="category-card" style="--i:0">
+      <div class="category-card" style="--i:0">
         <span class="cat-content">
           <span class="cat-num">01</span>
           <span class="cat-name">Pisos e Revestimentos</span>
           <span class="cat-desc">Porcelanatos, cerâmicas e rejuntes.</span>
-          <span class="cat-cta">Pedir orçamento <span class="cat-cta-arrow">→</span></span>
         </span>
         <span class="cat-visual" style="background-image:url('assets/photos/cat-01.jpg')"></span>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5513997585780?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20Ferramentas." target="_blank" rel="noopener" class="category-card" style="--i:1">
+      <div class="category-card" style="--i:1">
         <span class="cat-content">
           <span class="cat-num">02</span>
           <span class="cat-name">Ferramentas</span>
           <span class="cat-desc">Manuais e elétricas, acessórios e EPIs.</span>
-          <span class="cat-cta">Pedir orçamento <span class="cat-cta-arrow">→</span></span>
         </span>
         <span class="cat-visual" style="background-image:url('assets/photos/cat-02.jpg')"></span>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5513997585780?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20Material%20El%C3%A9trico." target="_blank" rel="noopener" class="category-card" style="--i:2">
+      <div class="category-card" style="--i:2">
         <span class="cat-content">
           <span class="cat-num">03</span>
           <span class="cat-name">Material Elétrico</span>
           <span class="cat-desc">Fios, cabos, disjuntores e iluminação.</span>
-          <span class="cat-cta">Pedir orçamento <span class="cat-cta-arrow">→</span></span>
         </span>
         <span class="cat-visual" style="background-image:url('assets/photos/cat-03.jpg')"></span>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5513997585780?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20Hidr%C3%A1ulica." target="_blank" rel="noopener" class="category-card" style="--i:3">
+      <div class="category-card" style="--i:3">
         <span class="cat-content">
           <span class="cat-num">04</span>
           <span class="cat-name">Hidráulica</span>
           <span class="cat-desc">Tubos, conexões, registros e caixas d'água.</span>
-          <span class="cat-cta">Pedir orçamento <span class="cat-cta-arrow">→</span></span>
         </span>
         <span class="cat-visual" style="background-image:url('assets/photos/cat-04.jpg')"></span>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5513997585780?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20Tintas." target="_blank" rel="noopener" class="category-card" style="--i:4">
+      <div class="category-card" style="--i:4">
         <span class="cat-content">
           <span class="cat-num">05</span>
           <span class="cat-name">Tintas</span>
           <span class="cat-desc">Tintas, vernizes, pincéis e rolos.</span>
-          <span class="cat-cta">Pedir orçamento <span class="cat-cta-arrow">→</span></span>
         </span>
         <span class="cat-visual" style="background-image:url('assets/photos/cat-05.jpg')"></span>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5513997585780?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20Ferragens." target="_blank" rel="noopener" class="category-card" style="--i:5">
+      <div class="category-card" style="--i:5">
         <span class="cat-content">
           <span class="cat-num">06</span>
           <span class="cat-name">Ferragens</span>
           <span class="cat-desc">Parafusos, fechaduras, dobradiças e mais.</span>
-          <span class="cat-cta">Pedir orçamento <span class="cat-cta-arrow">→</span></span>
         </span>
         <span class="cat-visual" style="background-image:url('assets/photos/cat-06.jpg')"></span>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5513997585780?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20Cimento%20e%20Argamassa." target="_blank" rel="noopener" class="category-card" style="--i:6">
+      <div class="category-card" style="--i:6">
         <span class="cat-content">
           <span class="cat-num">07</span>
-          <span class="cat-name">Cimento e Argamassa</span>
-          <span class="cat-desc">Cimento, areia, cal e argamassas.</span>
-          <span class="cat-cta">Pedir orçamento <span class="cat-cta-arrow">→</span></span>
+          <span class="cat-name">Utilidades domésticas</span>
+          <span class="cat-desc">Talheres, copos, pratos e outros</span>
         </span>
         <span class="cat-visual" style="background-image:url('assets/photos/cat-07.jpg')"></span>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5513997585780?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20Limpeza%20e%20Jardinagem." target="_blank" rel="noopener" class="category-card" style="--i:7">
+      <div class="category-card" style="--i:7">
         <span class="cat-content">
           <span class="cat-num">08</span>
           <span class="cat-name">Limpeza e Jardinagem</span>
           <span class="cat-desc">Ferramentas de jardim e produtos de limpeza.</span>
-          <span class="cat-cta">Pedir orçamento <span class="cat-cta-arrow">→</span></span>
         </span>
         <span class="cat-visual" style="background-image:url('assets/photos/cat-08.jpg')"></span>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5513997585780?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20Gabinetes%20e%20Pias." target="_blank" rel="noopener" class="category-card" style="--i:8">
+      <div class="category-card" style="--i:8">
         <span class="cat-content">
           <span class="cat-num">09</span>
           <span class="cat-name">Gabinetes e Pias</span>
           <span class="cat-desc">Gabinetes, cubas, pias e acessórios para banheiro e cozinha.</span>
-          <span class="cat-cta">Pedir orçamento <span class="cat-cta-arrow">→</span></span>
         </span>
         <span class="cat-visual" style="background-image:url('assets/photos/cat-09.jpg')"></span>
-      </a>
+      </div>
 
-      <a href="https://wa.me/5513997585780?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20Lou%C3%A7as%20e%20Metais%20Sanit%C3%A1rios." target="_blank" rel="noopener" class="category-card" style="--i:9">
+      <div class="category-card" style="--i:9">
         <span class="cat-content">
           <span class="cat-num">10</span>
           <span class="cat-name">Louças e Metais Sanitários</span>
           <span class="cat-desc">Vasos, lavatórios, torneiras, registros e chuveiros.</span>
-          <span class="cat-cta">Pedir orçamento <span class="cat-cta-arrow">→</span></span>
         </span>
         <span class="cat-visual" style="background-image:url('assets/photos/cat-10.jpg')"></span>
-      </a>
+      </div>
 
     </div>
   </section>
