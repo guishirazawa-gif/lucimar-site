@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:#e7e2d4;}
+  a{text-decoration:none;}
+</style>
+</helmet>
+
+<div style="width:390px;margin:0 auto;background:#ffffff;font-family:'Hanken Grotesk',sans-serif;color:#18293a;overflow:hidden;">
+
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:#13293f;">
+    <div style="background:#f4eedc;padding:6px 11px;border-radius:9px;display:inline-flex;"><img src="assets/logo-box.png" alt="Lucimar" style="height:30px;display:block;"></div>
+    <a href="https://wa.me/5513997585780" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#ffffff;padding:9px 16px;border-radius:10px;font-weight:700;font-size:14px;"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.512 5.26l-.999 3.648 3.736-.979.24.172zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.074-.148-.669-1.611-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"></path></svg>WhatsApp</a>
+  </header>
+
+  <section style="position:relative;height:500px;">
+    <img src="assets/storefront.jpeg" alt="Loja Lucimar" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:18% center;display:block;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,32,50,0.32) 0%,rgba(15,32,50,0.30) 40%,rgba(15,32,50,0.62) 100%);"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 20px 28px;">
+      <div style="background:rgba(244,238,220,0.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.30);border-radius:18px;padding:22px 22px 24px;box-shadow:0 8px 28px -12px rgba(0,0,0,0.4);">
+        <h1 style="font-weight:800;letter-spacing:-0.02em;margin:0;color:#f6f0de;line-height:1.05;"><span style="display:block;font-size:32px;">Vai construir ou reformar?</span><span style="display:block;font-size:18px;margin-top:8px;">Temos o que você precisa</span></h1>
+        <p style="font-size:15px;line-height:1.5;color:#eef0f8;margin:14px 0 0;">Tudo para a sua obra com preço justo, estoque amplo e entrega rápida.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:44px 20px 40px;">
+    <div style="font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:#13293f;font-weight:700;line-height:1.2;">Trabalhamos com as seguintes linhas:</div>
+    <div style="border-top:2px solid #13293f;margin-top:18px;">
+      <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="10">
+        <a href="#" style="display:flex;align-items:center;gap:14px;padding:16px 2px;border-bottom:1px solid rgba(27,58,91,0.14);">
+          <span style="font-size:13px;color:#b23a2e;font-weight:600;width:20px;flex-shrink:0;">{{ cat.num }}</span>
+          <span style="width:50px;height:50px;flex-shrink:0;border-radius:9px;background:repeating-linear-gradient(45deg,#eef0f2 0 7px,#f7f8fa 7px 14px);border:1px solid rgba(27,58,91,0.12);display:flex;align-items:center;justify-content:center;"><span style="font-size:8px;color:rgba(27,58,91,0.55);">foto</span></span>
+          <span style="flex:1;min-width:0;"><span style="display:block;font-size:16px;font-weight:700;color:#13293f;line-height:1.2;">{{ cat.name }}</span><span style="display:block;font-size:12.5px;color:#5d6b78;margin-top:2px;line-height:1.3;"><br></span></span>
+          <span style="font-size:18px;color:#1b3a5b;flex-shrink:0;">→</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:44px 20px;background:#13293f;color:#f4eedc;">
+    <div style="font-size: 25px; letter-spacing: 0.14em; text-transform: uppercase; color: #e9b3aa; font-weight: 600">LUCIMAR</div>
+    <h2 style="font-size:30px;font-weight:800;letter-spacing:-0.02em;margin:12px 0 0;line-height:1.08;">Tradição de quem entende de obra</h2>
+    <p style="font-size:15.5px;line-height:1.6;color:rgba(244,238,220,0.82);margin:18px 0 0;">Desde 1998, a Lucimar Materiais para Construção é referência em Mongaguá para quem vai construir, reformar ou fazer manutenção. Somos uma empresa familiar, com atendimento próximo e personalizado.</p>
+    <p style="font-size:15.5px;line-height:1.6;color:rgba(244,238,220,0.82);margin:14px 0 0;">Do profissional ao morador, ajudamos cada cliente a comprar a quantidade certa e a economizar de verdade.</p>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:24px;">
+      <div style="background:#eef1f6;border-radius:13px;padding:20px 22px;text-align:center;">
+        <div style="font-size:34px;font-weight:800;color:#13293f;line-height:1;">+28</div>
+        <div style="font-size:13px;color:#5d6b78;margin-top:6px;">anos no mercado</div>
+      </div>
+      <div style="background:#eef1f6;border-radius:13px;padding:18px 22px;text-align:center;">
+        <div style="font-size:19px;font-weight:700;color:#13293f;">Empresa familiar</div>
+      </div>
+      <div style="background:#eef1f6;border-radius:13px;padding:18px 22px;text-align:center;">
+        <div style="font-size:19px;font-weight:700;color:#13293f;">Amplo estoque</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:44px 20px;background:#f6f6f4;">
+    <div style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#b23a2e;font-weight:600;">Serviços</div>
+    <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.02em;color:#13293f;margin:12px 0 26px;line-height:1.1;">Feitos para facilitar a sua obra</h2>
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+        <div style="background:#ffffff;border:1px solid rgba(27,58,91,0.12);border-top:3px solid #b23a2e;border-radius:4px 4px 14px 14px;padding:0 22px 24px;overflow:hidden;">
+          <div style="height:150px;margin:0 -22px 22px;background:repeating-linear-gradient(45deg,#eef0f2 0 11px,#f7f8fa 11px 22px);display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(27,58,91,0.10);">
+            <span style="font-size:12px;color:rgba(27,58,91,0.6);background:rgba(255,255,255,0.9);padding:6px 12px;border-radius:6px;">foto · {{ s.photoLabel }}</span>
+          </div>
+          <div style="font-size:13px;color:#b23a2e;font-weight:600;">{{ s.num }}</div>
+          <h3 style="font-size:20px;font-weight:700;color:#13293f;margin:10px 0 0;">{{ s.title }}</h3>
+          <p style="font-size:15px;line-height:1.55;color:#4a5763;margin:10px 0 0;">{{ s.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:32px 20px;border-top:1px solid rgba(27,58,91,0.10);border-bottom:1px solid rgba(27,58,91,0.10);">
+    <div style="font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:#1b3a5b;font-weight:600;text-align:center;">Marcas que trabalhamos</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;">
+      <div style="height:52px;background:#ffffff;border:1px solid rgba(27,58,91,0.16);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(27,58,91,0.5);">logo</div>
+      <div style="height:52px;background:#ffffff;border:1px solid rgba(27,58,91,0.16);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(27,58,91,0.5);">logo</div>
+      <div style="height:52px;background:#ffffff;border:1px solid rgba(27,58,91,0.16);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(27,58,91,0.5);">logo</div>
+      <div style="height:52px;background:#ffffff;border:1px solid rgba(27,58,91,0.16);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(27,58,91,0.5);">logo</div>
+      <div style="height:52px;background:#ffffff;border:1px solid rgba(27,58,91,0.16);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(27,58,91,0.5);">logo</div>
+      <div style="height:52px;background:#ffffff;border:1px solid rgba(27,58,91,0.16);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(27,58,91,0.5);">logo</div>
+    </div>
+  </section>
+
+  <section style="padding:44px 20px;">
+    <div style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#b23a2e;font-weight:600;">Onde estamos</div>
+    <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.02em;color:#13293f;margin:12px 0 0;">Visite a nossa loja</h2>
+    <p style="font-size:16px;line-height:1.55;color:#4a5763;margin:14px 0 0;">Av. Monteiro Lobato, 7944<br>Balneário Itaóca · Mongaguá-SP<br>CEP 11733-740</p>
+    <div style="margin-top:20px;">
+      <sc-for list="{{ hours }}" as="row" hint-placeholder-count="3">
+        <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(27,58,91,0.12);font-size:15px;">
+          <span style="color:#4a5763;">{{ row.d }}</span>
+          <span style="font-weight:600;color:#13293f;">{{ row.h }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="height:220px;border-radius:16px;margin-top:22px;background:repeating-linear-gradient(45deg,#eef0f2 0 11px,#f7f8fa 11px 22px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(27,58,91,0.12);">
+      <span style="font-size:12px;color:rgba(27,58,91,0.6);background:rgba(255,255,255,0.9);padding:7px 12px;border-radius:8px;text-align:center;">mapa · Av. Monteiro Lobato, 7944</span>
+    </div>
+    <a href="https://wa.me/5513997585780" style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;background:#25D366;color:#ffffff;padding:16px 20px;border-radius:12px;font-weight:700;font-size:16px;"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.512 5.26l-.999 3.648 3.736-.979.24.172zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.074-.148-.669-1.611-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"></path></svg>Falar no WhatsApp · (13) 99758-5780</a>
+  </section>
+
+  <section style="padding:44px 22px;background:rgba(27,58,91,0.07);color:#13293f;text-align:center;">
+    <h2 style="font-size:30px;font-weight:800;letter-spacing:-0.025em;margin:0;line-height:1.08;">Sua obra não pode parar.</h2>
+    <p style="font-size:15.5px;color:rgba(27,58,91,0.72);margin:14px 0 0;">Mande mensagem no WhatsApp e receba o orçamento ainda hoje.</p>
+  </section>
+
+  <footer style="padding:24px 20px;background:#13293f;color:#7f93a4;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;">
+    <div style="background:#f4eedc;padding:6px 12px;border-radius:9px;display:inline-flex;"><img src="assets/logo-box.png" alt="Lucimar" style="height:26px;display:block;"></div>
+    <div style="font-size:12px;color:#7f93a4;line-height:1.5;">© 2026 Lucimar Materiais de Construção<br>Mongaguá-SP</div>
+  </footer>
+
+</div>
+
+<template id="__bundler_thumbnail" data-bg-color="#13293f">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#13293f"/>
+    <rect x="320" y="300" width="560" height="200" rx="34" fill="#1b3a5b"/>
+    <text x="600" y="438" font-family="'Hanken Grotesk', sans-serif" font-size="140" font-style="italic" font-weight="800" fill="#f4eedc" text-anchor="middle">Lucimar</text>
+  </svg>
+</template></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      categories: [
+        { num: '01', name: 'Pisos e Revestimentos', desc: 'Porcelanatos, cerâmicas e rejuntes.' },
+        { num: '02', name: 'Ferramentas', desc: 'Manuais e elétricas, acessórios e EPIs.' },
+        { num: '03', name: 'Material Elétrico', desc: 'Fios, cabos, disjuntores e iluminação.' },
+        { num: '04', name: 'Hidráulica', desc: 'Tubos, conexões, registros e caixas d’água.' },
+        { num: '05', name: 'Tintas', desc: 'Tintas, vernizes, pincéis e rolos.' },
+        { num: '06', name: 'Ferragens', desc: 'Parafusos, fechaduras, dobradiças e mais.' },
+        { num: '07', name: 'Cimento e Argamassa', desc: 'Cimento, areia, cal e argamassas.' },
+        { num: '08', name: 'Jardinagem e Limpeza', desc: 'Ferramentas de jardim e produtos de limpeza.' },
+        { num: '09', name: 'Gabinetes e Pias', desc: 'Gabinetes, cubas, pias e acessórios para banheiro e cozinha.' },
+        { num: '10', name: 'Louças e Metais Sanitários', desc: 'Vasos, lavatórios, torneiras, registros e chuveiros.' },
+      ],
+      services: [
+        { num: '01', title: 'Atendimento especializado', desc: 'Nossa equipe entende de obra e ajuda você a comprar a quantidade certa.', photoLabel: 'atendimento' },
+        { num: '02', title: 'Orçamento pelo WhatsApp', desc: 'Mande sua lista e receba o orçamento no mesmo dia, sem sair de casa.', photoLabel: 'orçamento' },
+        { num: '03', title: 'Entrega rápida', desc: 'Seu material direto na obra e com agilidade em Mongaguá.', photoLabel: 'caminhão de entregas' },
+      ],
+      hours: [
+        { d: 'Segunda a Sexta', h: '08h – 17h' },
+        { d: 'Sábado', h: '08h – 13h' },
+        { d: 'Domingo', h: 'Fechado' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

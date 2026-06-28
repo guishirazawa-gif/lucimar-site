@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Heavy original source images (optimized copies live in assets/).
+# Leading slash anchors to repo root so assets/photos/ is NOT matched
+# (git is case-insensitive on macOS).
+/Photos/
+/Photos serviços /
+
+# Python / tooling
+venv/
+__pycache__/
