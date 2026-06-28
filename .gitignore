@@ -11,8 +11,7 @@
 # Uncompressed source images dropped directly into assets/ (the optimized
 # .jpg versions are what the site actually uses). Kept locally, not deployed.
 /assets/storefront.png
-/assets/services/svc-03.png
-/assets/services/svc-02.png
+/assets/services/*.png
 
 # Python / tooling
 venv/
